@@ -2,16 +2,27 @@
   "name": "rpa_test",
   "version": "1.0.0",
   "main": "main.js",
+  "build": {
+    "appId": "com.example.rpa_test",
+    "win": {
+      "target": "nsis",
+      "icon": "./fabicon.ico"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "An Electron app for web scraping",
   "dependencies": {
-    "electron": "^33.3.1",
     "playwright": "^1.49.1"
+  },
+  "devDependencies": {
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8"
   }
 }
