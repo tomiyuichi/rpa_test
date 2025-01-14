@@ -46,6 +46,8 @@ npm install --save-dev electron
 npm run dist -- --win
 ```
 
+## WSL上でのbuild
+
 ```bash
 ubuntu@DESKTOP-GFD5L8A:~/react_ws/rpa_test$ npm run dist -- --win
 
@@ -80,4 +82,43 @@ ubuntu@DESKTOP-GFD5L8A:~/react_ws/rpa_test$ npm run dist -- --win
 ```
 
 - クロスビルドできたが、windows上で、WSLのXLAUNCHで動いていたように動かない
+
+## Windows上でのbuild
+
+
+- git bash for windows 使用。
+- node.jsの最新LTSを公式からmsi形式でダウンロード
+
+```bash
+$ npm start
+
+> rpa_test@1.0.0 start
+> electron .
+
+
+Error occurred in handler for 'start-scraping': browserType.launch: Executable doesn't exist at C:\Users\tomi\AppData\Local\ms-playwright\chromium_headless_shell-1148\c
+hrome-win\headless_shell.exe
+笊披武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武
+笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊・笊・Looks like Playwright Test or Playwright was just installed or updated. 笊・笊・Please run the following c
+ommand to download new browsers:              笊・笊・                                                                        笊・笊・    npx playwright install
+                                      笊・笊・                                                                        笊・笊・<3 Playwright Team
+                              笊・笊壺武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊
+絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊絶武笊・    at scrapeWebsite (C:\Users\tomi\rpa_test\scraper.js:4:34)
+    at C:\Users\tomi\rpa_test\main.js:21:26 {
+  name: 'Error'
+}
+C:\Users\tomi\rpa_test\node_modules\electron\dist\electron.exe exited with signal SIGINT
+
+```
+
+- 上記の通り、コマンドを実行。
+
+```bash
+$ npx playwright install
+```
+
+- ここまでで、`npm start`による、electron window上での動作確認はできた。
+- `npm run dist`はまだ何かエラーが出ているが、一旦変更をコミット
+- 追記：実はWSL上でbuildしたバイナリも、Windows上できちんと動作していた。
+  - playwrightのスクレイピング処理が時間かかっていただけのよう。
 
